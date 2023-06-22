@@ -12,11 +12,30 @@ textarea {
   padding: 10px;
 }
 .description {
-  white-space: pre-wrap;
+  padding: 5px;
+  vertical-align: middle;
+  align-items: center;
 }
 
 .time-block {
   border-radius: 15px;
+}
+
+#alert-message {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.message {
+  display: inline-block;
+}
+
+.icon {
+  color: #309167;
+}
+
+.local-storage {
+  color: #a83838;
 }
 
 .row {
@@ -27,6 +46,7 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  text-align: center;
 }
 
 .past {

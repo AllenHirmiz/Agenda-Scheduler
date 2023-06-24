@@ -13,6 +13,8 @@ function createDatabase() {
   var taskText = "";
   var todayDate = getToday();
   var myDay = [];
+  var agendaHour = dayjs().hour(12);
+  console.log("hour "+ dayjs().hour(12).format('h A'));
   
   for (var index = 0; index < totalHours; index++) {
     myDay.push({hour: hoursStart,task: taskText});
@@ -24,16 +26,13 @@ function createDatabase() {
     localStorage.setItem(todayDate, JSON.stringify(myDay));
   }
 
-  console.log(myDay);
+  console.log("Myday "+myDay);
 }
 
 //displayDayPlanner function renders the HTML to display the timetable 
 function displayDayPlanner() {
   var currentDate = getToday();
-
-  var savedDay = JSON.parse(localStorage.getItem(currentDate));
-
-
+  var getDay = JSON.parse(localStorage.getItem(currentDate));
   var appointmentConfirmation = $('<div>').attr({"id": "alert-message"});
   var messageAdd = $('<div>').attr({ "class": "message"});
   var messageLocalStorage = $('<div>').attr({ "class": "message local-storage"});
@@ -41,26 +40,28 @@ function displayDayPlanner() {
   appointmentConfirmation.append(messageAdd," ", messageLocalStorage," ", messageIcon);
   $(".container-lg").append(appointmentConfirmation);
 
-  for (var i = 0; i < savedDay.length; i++) {
+  for (var i = 0; i < getDay.length; i++) {
 
-    var getHour = savedDay[i].hour;
-    var getTask = savedDay[i].task;
-
+    var getHourNumber = dayjs().hour(getDay[i].hour).format('h A');
+    var getHour = getDay[i].hour;
+    var getTask = getDay[i].task;
     var timeTableRow = $('<div>').attr({ "class": "row", "id": "form_" + getHour });
-    var hourArea = $('<div>').text(getHour).attr({ "class": "col-md-2 hour", "id": "div_" + getHour });
+    var hourArea = $('<div>').text(getHourNumber).attr({ "class": "col-md-2 hour", "id": "div_" + getHour });
     var saveButton = $("<button>").attr({ "class": "col-md-1 saveBtn", "id": "Btn_" + getHour });
     var taskArea = $('<textarea>').text(getTask).attr({ "id": "textarea_" + getHour });
-
     var buttonIcon = $("<i class='far fa-save fa-lg'></i>");
     var momentPresent = moment().hour();
     var momentCheck = getHour;
+    
 
     console.log("momentCheck " + momentCheck);
     console.log("momentPresent "+ momentPresent);
+    console.log("getHour " + getHour);
+    console.log("moment().hour() "+ moment().hour());
 
-    if (momentCheck < momentPresent) {
+    if (getHour < moment().hour()) {
       taskArea.attr({ "class": "col-md-9 description past" });
-    } else if (momentCheck == momentPresent) {
+    } else if (getHour == moment().hour()) {
       taskArea.attr({ "class": "col-md-9 description present" });
     } else {
       taskArea.attr({ "class": "col-md-9 description future" });
@@ -79,25 +80,25 @@ function displayDayPlanner() {
         messageAdd.text("Appointment Added to");
         messageLocalStorage.text("localStorage");
         messageIcon.attr({ "class": "fas fa-check icon"});
-        saveAgendaBtn(id);
+        saveBtn(id);
       }
     );
   }
 }
 
 
-function saveAgendaBtn(id) {
+function saveBtn(id) {
 
   var hour_id = id.split("_")[1]
   var textToSave = $("#textarea_" + hour_id).val();
   var currentDate = getToday();
-  var savedDay = JSON.parse(localStorage.getItem(currentDate));
+  var getDay = JSON.parse(localStorage.getItem(currentDate));
 
-  for (var i = 0; i < savedDay.length; i++) {
-    var getHour = savedDay[i].hour;
+  for (var i = 0; i < getDay.length; i++) {
+    var getHour = getDay[i].hour;
     if (getHour == hour_id) {
-      savedDay[i].task = textToSave;
-      localStorage.setItem(currentDate, JSON.stringify(savedDay));
+      getDay[i].task = textToSave;
+      localStorage.setItem(currentDate, JSON.stringify(getDay));
       break;
     }
   }

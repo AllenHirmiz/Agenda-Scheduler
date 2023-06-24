@@ -39,7 +39,7 @@ The following image shows the web application's appearance and functionality:
 
 ## Full screen size
 Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM. 
-![Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM](./assets/images/full-page.png)
+![Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM](./Assets/images/full-page.png)
 ## Responsive Layout
 The website is also designed to work on large and small screens like mobile.
-![Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM](./assets/images/small-screen.png)
+![Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM](./Assets/images/small-screen.png)

@@ -60,7 +60,7 @@ textarea {
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #70bb70;
   color: white;
 }
 
@@ -75,4 +75,36 @@ textarea {
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+.container-md {
+  text-align: center;
+}
+
+.clear-button {
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: #06aed5;
+  color: white;
+  width: 50%;
+}
+
+.clear-button i:hover {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 765px) {
+  .saveBtn {
+    border-radius: 10px;
+    margin: 5px 0;
+  }
+
+  .future {
+    border-radius: 10px;
+  }
+
+  .clear-button {
+    width: 75%;
+  }
 }

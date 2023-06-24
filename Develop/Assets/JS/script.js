@@ -8,8 +8,8 @@ function getToday() {
 //This function is to generate the agenda rows depending on number of hours "totalHours"
 function createDatabase() {
 
-  var totalHours = 9;
-  var hoursStart = "9";
+  var totalHours = 9; // Number of hours rows
+  var hoursStart = "9"; // Agenda Start hour
   var taskText = "";
   var todayDate = getToday();
   var myDay = [];
@@ -37,8 +37,21 @@ function displayDayPlanner() {
   var messageAdd = $('<div>').attr({ "class": "message"});
   var messageLocalStorage = $('<div>').attr({ "class": "message local-storage"});
   var messageIcon = $('<div>').attr({ "class": "message"});
+  var clearAllButton = $("<button>").attr({ "class": "col-lg-1 clear-button p-2 m-2", "id": "start-new-day", "value": "Start New Day"});
+
+  clearAllButton.text("Start A New Day");
   appointmentConfirmation.append(messageAdd," ", messageLocalStorage," ", messageIcon);
+  
   $(".container-lg").append(appointmentConfirmation);
+  $(".container-md").append(clearAllButton);
+
+
+  // When Start New Day button is clicked will clear out all local host values
+  $("#start-new-day").click(
+    function () {
+      clearLocal();
+    }
+  );
 
   for (var i = 0; i < getDay.length; i++) {
 
@@ -53,7 +66,7 @@ function displayDayPlanner() {
     var momentPresent = moment().hour();
     var momentCheck = getHour;
     
-
+    
     console.log("momentCheck " + momentCheck);
     console.log("momentPresent "+ momentPresent);
     console.log("getHour " + getHour);
@@ -73,7 +86,7 @@ function displayDayPlanner() {
 
     $(".container-lg").append(timeTableRow);
 
-    //Function to handle events where save button is clicked
+    //When Save Button is clicked to rub the following tasks
     $("#Btn_" + getHour).click(
       function () {
         var id = this.id;
@@ -102,6 +115,12 @@ function saveBtn(id) {
       break;
     }
   }
+}
+
+
+function clearLocal() {
+  localStorage.clear();
+  location.reload();
 }
 
 function init() {

@@ -36,7 +36,10 @@ GitHub Pages: Hosting service for deploying the website.
 
 The following image shows the web application's appearance and functionality:
 
-## Customer will be presented with 2 button, and only one button is clickable to all them to generate a custom password based on their criteria. 
-![page will first load coding quiz welcome message with a button to start the quiz](./assets/images/first-page.png)
-## When Generate Password is clicked, the customer will be presented with a few pop-up messages to advise the password length and strength.
-![Once start quiz button is clicked a list of question will be displayed with a timer](./assets/images/start-questions.png)
+
+## Full screen size
+Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM. 
+![Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM](./assets/images/full-page.png)
+## Responsive Layout
+The website is also designed to work on large and small screens like mobile.
+![Customers that are to view the website will be presented with a page that contain rows for each hour starting from 9 AM until 5 PM](./assets/images/small-screen.png)

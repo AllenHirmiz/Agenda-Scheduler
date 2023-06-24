@@ -1,6 +1,6 @@
 //This function is to capture today date and week day name to the page header
 function getToday() {
-  var todayDate = moment().format('dddd, MMMM Do');
+  var todayDate = dayjs().format('dddd, MMMM D');
   $("#currentDay").text(todayDate);
   return (todayDate);
 }
@@ -63,18 +63,18 @@ function displayDayPlanner() {
     var saveButton = $("<button>").attr({ "class": "col-md-1 saveBtn", "id": "Btn_" + getHour });
     var taskArea = $('<textarea>').text(getTask).attr({ "id": "textarea_" + getHour });
     var buttonIcon = $("<i class='far fa-save fa-lg'></i>");
-    var momentPresent = moment().hour();
-    var momentCheck = getHour;
+    var dayPresent = dayjs().hour();
+    var dayCheck = getHour;
     
     
-    console.log("momentCheck " + momentCheck);
-    console.log("momentPresent "+ momentPresent);
+    console.log("dayCheck " + dayCheck);
+    console.log("dayPresent "+ dayPresent);
     console.log("getHour " + getHour);
-    console.log("moment().hour() "+ moment().hour());
+    console.log("dayjs().hour() "+ dayjs().hour());
 
-    if (getHour < moment().hour()) {
+    if (getHour < dayjs().hour()) {
       taskArea.attr({ "class": "col-md-9 description past" });
-    } else if (getHour == moment().hour()) {
+    } else if (getHour == dayjs().hour()) {
       taskArea.attr({ "class": "col-md-9 description present" });
     } else {
       taskArea.attr({ "class": "col-md-9 description future" });

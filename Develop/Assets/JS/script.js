@@ -1,7 +1,18 @@
 //This function is to capture today date and week day name to the page header
 function getToday() {
+  var ordinalText = "";
+  if (dayjs().format('D') === "1" || dayjs().format('D') === "21" || dayjs().format('D') === "31") {
+    ordinalText = "st";
+  } else if (dayjs().format('D') === "2" || dayjs().format('D') === "22") {
+    ordinalText = "nd";
+  } else if (dayjs().format('D') === "3" || dayjs().format('D') === "23") {
+    ordinalText = "rd";
+  } else {
+    ordinalText = "th";
+  }
+  console.log("day number ",dayjs().format('D'))
   var todayDate = dayjs().format('dddd, MMMM D');
-  $("#currentDay").text(todayDate);
+  $("#currentDay").text(todayDate+ordinalText);
   return (todayDate);
 }
 

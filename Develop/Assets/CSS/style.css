@@ -100,7 +100,7 @@ textarea {
     margin: 5px 0;
   }
 
-  .future {
+  .future,.present, .past {
     border-radius: 10px;
   }
 
